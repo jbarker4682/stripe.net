@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E48E9AC1-3A88-406B-82FF-166B1E3C7A48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Stripe</RootNamespace>
+    <AssemblyName>Stripe.net</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET40</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Entities\StripeList.cs" />
+    <Compile Include="Entities\Refund.cs" />
+    <Compile Include="Entities\BankAccount.cs" />
+    <Compile Include="Entities\BalanceTransaction.cs" />
+    <Compile Include="Entities\Fee.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\RecipientActiveAccount.cs" />
+    <Compile Include="Entities\TransferReversal.cs" />
+    <Compile Include="Constants\RefundReasons.cs" />
+    <Compile Include="Internal\ExpandableProperty.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Options\BalanceTransactionListOptions.cs" />
+    <Compile Include="Options\RefundCreateOptions.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\RefundService.cs" />
+    <Compile Include="Options\RefundUpdateOptions.cs" />
+    <Compile Include="Options\InvoiceCreateOptions.cs" />
+    <Compile Include="Options\SourceOptions.cs" />
+    <Compile Include="Options\CreditCardOptions.cs" />
+    <Compile Include="Entities\DateFilter.cs" />
+    <Compile Include="Entities\ApplicationFeeRefund.cs" />
+    <Compile Include="Entities\ApplicationFee.cs" />
+    <Compile Include="Entities\BalanceAmount.cs" />
+    <Compile Include="Entities\Balance.cs" />
+    <Compile Include="Entities\Dispute.cs" />
+    <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\EventData.cs" />
+    <Compile Include="Entities\Event.cs" />
+    <Compile Include="Entities\Invoice.cs" />
+    <Compile Include="Entities\InvoiceLineItem.cs" />
+    <Compile Include="Entities\StripeError.cs" />
+    <Compile Include="Entities\OAuthToken.cs" />
+    <Compile Include="Entities\Period.cs" />
+    <Compile Include="Entities\Recipient.cs" />
+    <Compile Include="Entities\Token.cs" />
+    <Compile Include="Entities\Charge.cs" />
+    <Compile Include="Entities\Card.cs" />
+    <Compile Include="Entities\Plan.cs" />
+    <Compile Include="Entities\Subscription.cs" />
+    <Compile Include="Entities\Coupon.cs" />
+    <Compile Include="Entities\Discount.cs" />
+    <Compile Include="Entities\Transfer.cs" />
+    <Compile Include="Internal\EpochTime.cs" />
+    <Compile Include="Internal\StripeConfiguration.cs" />
+    <Compile Include="Internal\StripeDateTimeConverter.cs" />
+    <Compile Include="Utils\Mapper.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Properties\InternalsVisibleTo.cs" />
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Options\ApplicationFeeListOptions.cs" />
+    <Compile Include="Services\BalanceService.cs" />
+    <Compile Include="Options\BankAccountOptions.cs" />
+    <Compile Include="Services\ApplicationFeeService.cs" />
+    <Compile Include="Options\CardCreateOptions.cs" />
+    <Compile Include="Services\CardService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Options\CardUpdateOptions.cs" />
+    <Compile Include="Options\ChargeListOptions.cs" />
+    <Compile Include="Options\CustomerListOptions.cs" />
+    <Compile Include="Services\DisputeService.cs" />
+    <Compile Include="Options\EventListOptions.cs" />
+    <Compile Include="Services\EventService.cs" />
+    <Compile Include="Utils\EventParser.cs" />
+    <Compile Include="Options\InvoiceItemListOptions.cs" />
+    <Compile Include="Options\InvoiceItemUpdateOptions.cs" />
+    <Compile Include="Options\InvoiceItemCreateOptions.cs" />
+    <Compile Include="Services\InvoiceItemService.cs" />
+    <Compile Include="Options\InvoiceListOptions.cs" />
+    <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Options\ChargeCreateOptions.cs" />
+    <Compile Include="Services\ChargeService.cs" />
+    <Compile Include="Options\CouponCreateOptions.cs" />
+    <Compile Include="Services\CouponService.cs" />
+    <Compile Include="Options\CustomerUpdateOptions.cs" />
+    <Compile Include="Options\CustomerCreateOptions.cs" />
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Options\InvoiceUpdateOptions.cs" />
+    <Compile Include="Options\OAuthTokenCreateOptions.cs" />
+    <Compile Include="Services\OAuthTokenService.cs" />
+    <Compile Include="Options\PlanCreateOptions.cs" />
+    <Compile Include="Services\PlanService.cs" />
+    <Compile Include="Options\PlanUpdateOptions.cs" />
+    <Compile Include="Options\RecipientListOptions.cs" />
+    <Compile Include="Options\RecipientCreateOptions.cs" />
+    <Compile Include="Services\RecipientService.cs" />
+    <Compile Include="Options\RecipientUpdateOptions.cs" />
+    <Compile Include="Options\StripeListOptions.cs" />
+    <Compile Include="Options\SubscriptionUpdateOptions.cs" />
+    <Compile Include="Services\SubscriptionService.cs" />
+    <Compile Include="Options\SubscriptionCreateOptions.cs" />
+    <Compile Include="Options\TokenCreateOptions.cs" />
+    <Compile Include="Services\TokenService.cs" />
+    <Compile Include="Exceptions\StripeException.cs" />
+    <Compile Include="Internal\Urls.cs" />
+    <Compile Include="Internal\ParameterBuilder.cs" />
+    <Compile Include="Internal\Requestor.cs" />
+    <Compile Include="Options\TransferListOptions.cs" />
+    <Compile Include="Options\TransferCreateOptions.cs" />
+    <Compile Include="Services\TransferService.cs" />
+    <Compile Include="Constants\TransferFailureCodes.cs" />
+    <Compile Include="Constants\Events.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+</Project>
