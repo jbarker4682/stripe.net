@@ -53,6 +53,17 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\AccountVerification.cs" />
+    <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Birthday.cs" />
+    <Compile Include="Entities\DeclineChargeOn.cs" />
+    <Compile Include="Entities\DisputeEvidence.cs" />
+    <Compile Include="Entities\DisputeEvidenceDetails.cs" />
+    <Compile Include="Entities\LegalEntity.cs" />
+    <Compile Include="Entities\LegalEntityVerification.cs" />
+    <Compile Include="Entities\ManagedAccountKeys.cs" />
+    <Compile Include="Entities\ManagedBankAccount.cs" />
+    <Compile Include="Entities\StripeDocument.cs" />
     <Compile Include="Entities\StripeList.cs" />
     <Compile Include="Entities\Refund.cs" />
     <Compile Include="Entities\BankAccount.cs" />
@@ -60,13 +71,22 @@
     <Compile Include="Entities\Fee.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\RecipientActiveAccount.cs" />
+    <Compile Include="Entities\SubscriptionList.cs" />
+    <Compile Include="Entities\TermsAcceptance.cs" />
     <Compile Include="Entities\TransferReversal.cs" />
     <Compile Include="Constants\RefundReasons.cs" />
+    <Compile Include="Entities\TransferSchedule.cs" />
+    <Compile Include="Internal\DictionaryExtensions.cs" />
     <Compile Include="Internal\ExpandableProperty.cs" />
+    <Compile Include="Internal\FileStreamExtensions.cs" />
+    <Compile Include="Options\AccountCreateOptions.cs" />
+    <Compile Include="Options\AccountUpdateOptions.cs" />
+    <Compile Include="Entities\AdditionalOwner.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Options\BalanceTransactionListOptions.cs" />
     <Compile Include="Options\RefundCreateOptions.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\DocumentService.cs" />
     <Compile Include="Services\RefundService.cs" />
     <Compile Include="Options\RefundUpdateOptions.cs" />
     <Compile Include="Options\InvoiceCreateOptions.cs" />
@@ -98,6 +118,7 @@
     <Compile Include="Internal\EpochTime.cs" />
     <Compile Include="Internal\StripeConfiguration.cs" />
     <Compile Include="Internal\StripeDateTimeConverter.cs" />
+    <Compile Include="Options\TransferUpdateOptions.cs" />
     <Compile Include="Utils\Mapper.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Properties\InternalsVisibleTo.cs" />

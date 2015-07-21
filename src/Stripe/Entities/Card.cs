@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 
 using Newtonsoft.Json;
@@ -23,6 +24,9 @@ namespace Stripe.Entities
 
 		[JsonProperty("exp_year")]
 		public string ExpirationYear { get; set; }
+
+		[JsonProperty("fingerprint")]
+		public string Fingerprint { get; set; }
 
 		[JsonProperty("funding")]
 		public string Funding { get; set; }
@@ -57,31 +61,33 @@ namespace Stripe.Entities
 		[JsonProperty("country")]
 		public string Country { get; set; }
 
+		[JsonProperty("metadata")]
+		public object MetaData { get; set; }
+
+		#region Expandable Customer
+		public string CustomerId { get; set; }
+
+		[JsonIgnore]
+		public Customer Customer { get; set; }
+
+		[JsonProperty("customer")]
+		internal object InternalCustomer
+		{
+			set
+			{
+				ExpandableProperty<Customer>.Map(value, s => CustomerId = s, o => Customer = o);
+			}
+		}
+		#endregion
+
 		[JsonProperty("cvc_check")]
 		public string CvcCheck { get; set; }
 
 		[JsonProperty("dynamic_last4")]
 		public string DynamicLast4 { get; set; }
 
-		[JsonProperty("metadata")]
-		public Dictionary<string, string> Metadata { get; set; }
-
 		[JsonProperty("name")]
 		public string Name { get; set; }
-
-		[JsonProperty("tokenization_method")]
-		public string TokenizationMethod { get; set; }
-
-		[JsonProperty("fingerprint")]
-		public string Fingerprint { get; set; }
-
-		[JsonProperty("currency")]
-		public string Currency { get; set; }
-
-		[JsonProperty("default_for_currency")]
-		public bool DefaultForCurrency { get; set; }
-
-		#region Expandable Recipient
 
 		public string RecipientId { get; set; }
 
@@ -91,39 +97,10 @@ namespace Stripe.Entities
 		[JsonProperty("recipient")]
 		internal object InternalRecipient
 		{
-			set { ExpandableProperty<Recipient>.Map(value, s => this.RecipientId = s, o => this.Recipient = o); }
+			set
+			{
+				ExpandableProperty<Recipient>.Map(value, s => RecipientId = s, o => Recipient = o);
+			}
 		}
-
-		#endregion
-
-		#region Expandable Customer
-
-		public string CustomerId { get; set; }
-
-		[JsonIgnore]
-		public Customer Customer { get; set; }
-
-		[JsonProperty("customer")]
-		internal object InternalCustomer
-		{
-			set { ExpandableProperty<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o); }
-		}
-
-		#endregion
-
-		#region Expandable Account
-
-		public string AccountId { get; set; }
-
-		[JsonIgnore]
-		public Account Account { get; set; }
-
-		[JsonProperty("account")]
-		internal object InternalAccount
-		{
-			set { ExpandableProperty<Account>.Map(value, s => this.AccountId = s, o => this.Account = o); }
-		}
-
-		#endregion
 	}
 }

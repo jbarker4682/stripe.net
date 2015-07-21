@@ -12,11 +12,8 @@ namespace Stripe.Entities
 {
 	public class ApplicationFee : BaseEntity
 	{
-		[JsonProperty("object")]
-		public string Object { get; set; }
-
 		[JsonProperty("livemode")]
-		public bool LiveMode { get; set; }
+		public bool? LiveMode { get; set; }
 
 		[JsonProperty("amount")]
 		public int Amount { get; set; }
@@ -34,7 +31,7 @@ namespace Stripe.Entities
 		public bool Refunded { get; set; }
 
 		[JsonProperty("refunds")]
-		public StripeList<ApplicationFeeRefund> StripeApplicationFeeRefundList { get; set; }
+		public StripeList<ApplicationFee> ApplicationFeeRefundList { get; set; }
 
 		[JsonProperty("amount_refunded")]
 		public int AmountRefunded { get; set; }

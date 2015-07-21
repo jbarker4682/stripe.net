@@ -14,11 +14,8 @@ namespace Stripe.Entities
 {
 	public class Coupon : BaseEntity
 	{
-		[JsonProperty("object")]
-		public string Object { get; set; }
-
-		[JsonProperty("livemode")]
-		public bool LiveMode { get; set; }
+		[JsonProperty("currency")]
+		public string Currency { get; set; }
 
 		[JsonProperty("created"), JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime Created { get; set; }
@@ -26,20 +23,17 @@ namespace Stripe.Entities
 		[JsonProperty("duration")]
 		public string Duration { get; set; }
 
-		[JsonProperty("amount_off")]
-		public int? AmountOff { get; set; }
-
-		[JsonProperty("currency")]
-		public string Currency { get; set; }
-
 		[JsonProperty("duration_in_months")]
 		public int? DurationInMonths { get; set; }
+
+		[JsonProperty("livemode")]
+		public bool? LiveMode { get; set; }
 
 		[JsonProperty("max_redemptions")]
 		public int? MaxRedemptions { get; set; }
 
-		[JsonProperty("metadata")]
-		public Dictionary<string, string> Metadata { get; set; }
+		[JsonProperty("amount_off")]
+		public int? AmountOff { get; set; }
 
 		[JsonProperty("percent_off")]
 		public int? PercentOff { get; set; }
@@ -52,5 +46,8 @@ namespace Stripe.Entities
 
 		[JsonProperty("valid")]
 		public bool Valid { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

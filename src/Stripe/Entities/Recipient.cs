@@ -48,7 +48,7 @@ namespace Stripe.Entities
 
 		#region Expandable Default Card
 
-		public string StripeDefaultCardId { get; set; }
+		public string DefaultCardId { get; set; }
 
 		[JsonIgnore]
 		public Card DefaultCard { get; set; }
@@ -56,7 +56,7 @@ namespace Stripe.Entities
 		[JsonProperty("default_card")]
 		internal object InternalDefaultCard
 		{
-			set { ExpandableProperty<Card>.Map(value, s => this.StripeDefaultCardId = s, o => this.DefaultCard = o); }
+			set { ExpandableProperty<Card>.Map(value, s => this.DefaultCardId = s, o => this.DefaultCard = o); }
 		}
 
 		#endregion

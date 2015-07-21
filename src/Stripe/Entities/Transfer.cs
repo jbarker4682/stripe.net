@@ -56,6 +56,12 @@ namespace Stripe.Entities
 			set { ExpandableProperty<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o); }
 		}
 
+		[JsonProperty("destination")]
+		public string Destination { get; set; }
+
+		[JsonProperty("destination_payment")]
+		public string DestinationPayment { get; set; }
+
 		[JsonProperty("description")]
 		public string Description { get; set; }
 
@@ -87,5 +93,8 @@ namespace Stripe.Entities
 
 		[JsonProperty("statement_descriptor")]
 		public string StatementDescriptor { get; set; }
+
+		[JsonProperty("source_transaction")]
+		public string SourceTransaction { get; set; }
 	}
 }

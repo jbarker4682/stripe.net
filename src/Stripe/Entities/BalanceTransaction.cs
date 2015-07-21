@@ -48,5 +48,8 @@ namespace Stripe.Entities
 
 		[JsonProperty("source")]
 		public string Source { get; set; }
+
+		[JsonProperty("sourced_transfers")]
+		public StripeList<Transfer> SourcedTransfers { get; set; }
 	}
 }

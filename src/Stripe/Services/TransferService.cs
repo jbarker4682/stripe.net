@@ -35,6 +35,16 @@ namespace Stripe.Services
 			return Mapper<Transfer>.MapFromJson(response);
 		}
 
+		public virtual async Task<Transfer> Update(string transferId, TransferUpdateOptions updateOptions)
+		{
+			var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
+			url = this.ApplyAllParameters(updateOptions, url, false);
+
+			var response = await Requestor.Post(url);
+
+			return Mapper<Transfer>.MapFromJson(response);
+		}
+
 		public virtual async Task<Transfer> Cancel(string transferId)
 		{
 			var url = string.Format("{0}/{1}/cancel", Urls.Transfers, transferId);

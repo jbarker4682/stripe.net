@@ -40,14 +40,33 @@ namespace Stripe.Entities
 		[JsonProperty("refunds")]
 		public StripeList<Refund> StripeRefundList { get; set; }
 
-		[JsonProperty("source")]
-		public Card Source { get; set; }
-
-		[JsonProperty("status")]
-		public string Status { get; set; }
-
 		[JsonProperty("amount_refunded")]
 		public int AmountRefunded { get; set; }
+
+		public string BalanceTransactionId { get; set; }
+
+		[JsonIgnore]
+		public BalanceTransaction BalanceTransaction { get; set; }
+
+		[JsonProperty("balance_transaction")]
+		internal object InternalBalanceTransaction
+		{
+			set { ExpandableProperty<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o); }
+		}
+
+		[JsonProperty("card")]
+		public Card StripeCard { get; set; }
+
+		public string CustomerId { get; set; }
+
+		[JsonIgnore]
+		public Customer Customer { get; set; }
+
+		[JsonProperty("customer")]
+		internal object InternalCustomer
+		{
+			set { ExpandableProperty<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o); }
+		}
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
@@ -61,17 +80,6 @@ namespace Stripe.Entities
 		[JsonProperty("failure_message")]
 		public string FailureMessage { get; set; }
 
-		[JsonProperty("metadata")]
-		public Dictionary<string, string> Metadata { get; set; }
-
-		[JsonProperty("receipt_email")]
-		public string ReceiptEmail { get; set; }
-
-		[JsonProperty("receipt_number")]
-		public string ReceiptNumber { get; set; }
-
-		#region Expandable Invoice
-
 		public string InvoiceId { get; set; }
 
 		[JsonIgnore]
@@ -83,46 +91,27 @@ namespace Stripe.Entities
 			set { ExpandableProperty<Invoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o); }
 		}
 
-		#endregion
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 
-		#region Expandable Balance Transaction
+		[JsonProperty("receipt_email")]
+		public string ReceiptEmail { get; set; }
 
-		public string BalanceTransactionId { get; set; }
-
-		[JsonIgnore]
-		public BalanceTransaction BalanceTransaction { get; set; }
-
-		[JsonProperty("balance_transaction")]
-		internal object InternalBalanceTransaction
-		{
-			set { ExpandableProperty<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o); }
-		}
-
-		#endregion
-
-		#region Expandable Customer
-
-		public string CustomerId { get; set; }
+		[JsonProperty("receipt_number")]
+		public string ReceiptNumber { get; set; }
 
 		[JsonIgnore]
-		public Customer Customer { get; set; }
+		public string Destination { get; set; }
 
-		[JsonProperty("customer")]
-		internal object InternalCustomer
-		{
-			set { ExpandableProperty<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o); }
-		}
+		[JsonProperty("application_fee")]
+		public string ApplicationFee { get; set; }
 
-		#endregion
+		[JsonProperty("statement_descriptor")]
+		public string StatementDescriptor { get; set; }
 
-		// application_fee
+		public string TransferId { get; set; }
 
-		// destination
-
-		// todo: hash, fraud details
-
-		// todo: hash, shipping
-
-		// transfer
+		[JsonIgnore]
+		public Transfer Transfer { get; set; }
 	}
 }

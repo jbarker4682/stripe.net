@@ -1,17 +1,14 @@
-﻿#region
-
-using System.Collections.Generic;
-
-using Newtonsoft.Json;
-
-#endregion
+﻿using Newtonsoft.Json;
 
 namespace Stripe.Entities
 {
-	public class BankAccount : BaseEntity
+	public class ManagedBankAccount : BaseEntity
 	{
 		[JsonProperty("object")]
 		public string Object { get; set; }
+
+		[JsonProperty("last4")]
+		public string Last4 { get; set; }
 
 		[JsonProperty("country")]
 		public string Country { get; set; }
@@ -19,14 +16,8 @@ namespace Stripe.Entities
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
 
-		[JsonProperty("last4")]
-		public string Last4 { get; set; }
-
 		[JsonProperty("status")]
 		public string Status { get; set; }
-
-		[JsonProperty("bank_name")]
-		public string BankName { get; set; }
 
 		[JsonProperty("fingerprint")]
 		public string Fingerprint { get; set; }
@@ -34,13 +25,10 @@ namespace Stripe.Entities
 		[JsonProperty("routing_number")]
 		public string RoutingNumber { get; set; }
 
-		[JsonProperty("account")]
-		public string Account { get; set; }
+		[JsonProperty("bank_name")]
+		public string BankName { get; set; }
 
 		[JsonProperty("default_for_currency")]
-		public string DefaultForCurrency { get; set; }
-
-		[JsonProperty("metadata")]
-		public Dictionary<string, string> Metadata { get; set; }
+		public bool DefaultForCurrency { get; set; }
 	}
 }

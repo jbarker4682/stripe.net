@@ -12,8 +12,8 @@ namespace Stripe.Entities
 {
 	public class Discount : BaseEntity
 	{
-		[JsonProperty("object")]
-		public string Object { get; set; }
+		//[JsonProperty("object")]
+		//public string Object { get; set; }
 
 		[JsonProperty("coupon")]
 		public Coupon Coupon { get; set; }

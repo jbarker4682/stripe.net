@@ -19,6 +19,9 @@ namespace Stripe.Entities
 		[JsonProperty("livemode")]
 		public bool LiveMode { get; set; }
 
+		[JsonProperty("cards")]
+		public StripeList<Card> Cards { get; set; }
+
 		[JsonProperty("created"), JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime Created { get; set; }
 
@@ -43,28 +46,40 @@ namespace Stripe.Entities
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
 
-		[JsonProperty("sources")]
-		public StripeList<Card> SourceList { get; set; }
+		//[JsonProperty("sources")]
+		//public StripeList<Card> SourceList { get; set; }
 
 		[JsonProperty("subscriptions")]
-		public StripeList<Subscription> StripeSubscriptionList { get; set; }
+		public StripeList<Subscription> Subscriptions { get; set; }
 
 		[JsonProperty("deleted")]
 		public bool? Deleted { get; set; }
 
-		#region Expandable Default Source
+		//#region Expandable Default Source
 
-		public string DefaultSourceId { get; set; }
+		//public string DefaultSourceId { get; set; }
 
-		[JsonIgnore]
-		public Card DefaultSource { get; set; }
+		//[JsonIgnore]
+		//public Card DefaultSource { get; set; }
 
-		[JsonProperty("default_source")]
-		internal object InternalDefaultSource
+		//[JsonProperty("default_source")]
+		//internal object InternalDefaultSource
+		//{
+		//	set { ExpandableProperty<Card>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o); }
+		//}
+
+		//#endregion
+
+		public string DefaultCardId { get; set; }
+		public Card StripeDefaultCard { get; set; }
+
+		[JsonProperty("default_card")]
+		internal object InternalDefaultCard
 		{
-			set { ExpandableProperty<Card>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o); }
+			set
+			{
+				ExpandableProperty<Card>.Map(value, s => DefaultCardId = s, o => StripeDefaultCard = o);
+			}
 		}
-
-		#endregion
 	}
 }
